@@ -1,14 +1,4 @@
 from django.shortcuts import render
-from menutreeapp.models import MenuItem
 
-# Create your views here.
-def index(request):
-    menu = MenuItem.objects.all()
-    context = {
-        "menu": menu
-
-    }
-
-    print(context)
-
-    return render(request, 'index.html', context=context)
+def menu_view(request, menu_name):
+    return render(request, 'menutree/menu_view.html', {'menu_name': menu_name})

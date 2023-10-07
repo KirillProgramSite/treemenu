@@ -1,8 +1,6 @@
-from django.contrib import admin
 from django.urls import path
-from menutreeapp.views import index
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index)
+    path('menu/<str:menu_name>/', views.menu_view, name='menu_view'),
 ]

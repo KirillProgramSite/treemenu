@@ -1,20 +1,11 @@
 from django.db import models
 
-# Create your models here.
+
 class MenuItem(models.Model):
-    name = models.CharField(max_length=150)
-    link = models.CharField(max_length=150)
+    title = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, null=True, blank=True)
+    named_url = models.CharField(max_length=255, null=True, blank=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
     def __str__(self):
-        return self.name
-
-
-# class OneLevelMenuItem(models.Model):
-#     menu_item = models.ForeignKey(MenuItem, on_delete= models.CASCADE)
-#     name = models.CharField(max_length=150)
-#     link = models.CharField(max_length=150)
-
-#     def __str__(self):
-#         return self.name
-
-    
+        return self.title
